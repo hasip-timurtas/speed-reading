@@ -6,9 +6,12 @@ export default class App extends React.Component {
         this.state = {
             theText: "Bu uygulama ile okuma hızınız inanılmaz bir şekilde artacak. İlk başlarda çok hızlı olduğunu" +
             " düşüneceksiniz fakar ilerleyen zamanlarda bu durumun ne kadar zevkli olduğunu anlayacak ve okuma" +
-            " hızınızı inanılmaz bir şekilde geliştireceksiniz. her bölümün sonunda okuma hızınızı bir tık" +
-            " artıracaksınız",
+            " hızınız inanılmaz bir şekilde gelişmiş olacak. her bölümün sonunda okuma hızınızı bir tık" +
+            " artırmış olacaksınız",
             word: '',
+            leftWords: '',
+            middleWord: '',
+            rightWords: '',
             readingSpeed: 250,
             timer: null,
             btnStatus: false
@@ -28,7 +31,6 @@ export default class App extends React.Component {
     }
 
     componentDidMount() {
-        //this.getExample();
     }
 
     changeText() {
@@ -62,8 +64,11 @@ export default class App extends React.Component {
                     </div>
                     <br/>
                     <div className="reading-text">
-                        <span>{this.state.word}</span>
+                        <span>{this.state.leftWords}
+                            <span className="red-letter">{this.state.middleWord}</span>
+                            {this.state.rightWords} </span>
                     </div>
+
                     <br/>
                     <textarea cols="30" rows="10"
                               className="form-control"
@@ -88,7 +93,7 @@ export default class App extends React.Component {
         var self = this;
 
         this.state.timer = setInterval(function () {
-            self.changeWord(text.split(" ")[index]);
+            self.makecolorful(text.split(" ")[index]);
 
             console.log(text.split(" ")[index]);
 
@@ -108,25 +113,33 @@ export default class App extends React.Component {
         this.setState({btnStatus: false});
     }
 
-    changeWord(text) {
-        this.setState({word: this.makecolorful(text)});
-    }
-
     makecolorful(text) {
-        return text;
 
         var textLenght = Math.floor(text.length / 2);
         //console.log(textLenght);
-        var newText = "";
+        var firstWords = "";
+        var middleWord = "";
+        var lastWords = "";
 
         for (i = 0; i < text.length; i++) {
-            if (i == textLenght) {
-                newText += [<span className='red-letter'>  text[i] </span>];
-            } else {
-                newText += text[i];
+
+            if (i < textLenght) {
+                // left words
+                firstWords += text[i];
+            } else if (i == textLenght) {
+                // Middle word
+                middleWord = text[i];
+            } else if (i > textLenght) {
+                // right words
+                lastWords += text[i];
             }
+
         }
 
-        return newText;
+        this.setState({
+            leftWords: firstWords,
+            middleWord: middleWord,
+            rightWords: lastWords
+        });
     }
 }

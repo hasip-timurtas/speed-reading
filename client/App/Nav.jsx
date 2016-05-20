@@ -1,9 +1,9 @@
-import React,{Component} from 'react';
+import React, {Component} from 'react';
 import AccountsUI from './AccountsUI.jsx';
 
-export default class Nav extends Component{
-    render(){
-        return(
+export default class Nav extends Component {
+    render() {
+        return (
             <nav className="navbar navbar-default">
                 <div className="container-fluid">
                     <div className="navbar-header">
@@ -14,14 +14,14 @@ export default class Nav extends Component{
                             <span className="icon-bar"></span>
                             <span className="icon-bar"></span>
                         </button>
-                        <a className="navbar-brand" href="/">MHT Note</a>
+                        <a className="navbar-brand" href="/">MHT ReadSpeed</a>
                     </div>
                     <div id="navbar" className="navbar-collapse collapse">
                         <ul className="nav navbar-nav">
-                            <li><a href="/new-note">New Note</a></li>
+                            {/*<li><a href="/new-note">New Note</a></li>*/}
                         </ul>
                         <ul className="nav navbar-nav navbar-right">
-                            <li><a href="#"> <AccountsUI /> </a></li>
+                            {/* <li><a href="#"> <AccountsUI /> </a></li>*/}
                         </ul>
                     </div>
                 </div>

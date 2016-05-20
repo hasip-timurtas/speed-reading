@@ -5,9 +5,13 @@
     border: black 1px solid;
     text-align: center;
     padding-top: 7px;
+    font-weight: bold;
+    background-color: black;
+    opacity: 50;
+    color: white;
 }
 
-.text-speed{
+.text-speed {
     width: 100px !important;
 }
 
