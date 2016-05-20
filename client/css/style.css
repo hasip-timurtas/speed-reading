@@ -1,7 +1,16 @@
-.reading-area {
-    margin-left:auto;
-    margin-right:auto;
+.reading-text {
     width: 340px;
     height: 70px;
     font-size: 35px;
+    border: black 1px solid;
+    text-align: center;
+    padding-top: 7px;
+}
+
+.text-speed{
+    width: 100px !important;
+}
+
+.red-letter {
+    color: red;
 }
