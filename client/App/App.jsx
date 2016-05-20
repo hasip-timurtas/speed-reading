@@ -10,7 +10,8 @@ export default class App extends React.Component {
             " artıracaksınız",
             word: '',
             readingSpeed: 250,
-            timer: null
+            timer: null,
+            btnStatus: false
         }
     }
 
@@ -51,7 +52,9 @@ export default class App extends React.Component {
                         <input type="button" value="+" className="btn btn-default"
                                onClick={this.increaseSpeed.bind(this)}/>
                         <br/>
-                        <input type="button" value="Start" className="btn btn-default"
+                        <input type="button" value="Start"
+                               disabled={this.state.btnStatus}
+                               className="btn btn-default"
                                onClick={this.getExample.bind(this)}/>
 
                         <input type="button" value="Stop" className="btn btn-default"
@@ -97,11 +100,12 @@ export default class App extends React.Component {
 
         }, interval);
 
-
+        this.setState({btnStatus: true});
     }
 
     stopTimer() {
         clearTimeout(this.state.timer);
+        this.setState({btnStatus: false});
     }
 
     changeWord(text) {
